@@ -8,7 +8,7 @@
 
 <!-- ABOUT -->
 ## About
-> RollingBA is a web made for the first exam in the subject "Digital Compisition" in the career Graphic Digital Design in Da Vinci.
+> RollingBA is a web made for the first exam in the subject "Digital Compisition" in the career Digital Graphic Design in Da Vinci.
 
 <!-- BODY -->
 ## Website
