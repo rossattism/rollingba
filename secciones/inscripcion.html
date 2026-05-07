@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RollingBA – Inscripción</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">
+      <img src="../multimedia/logo-nav.svg" alt="RollingBA">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="evento.html">Evento</a></li>
+      <li><a href="ubicacion.html">Ubicación</a></li>
+      <li><a href="inscripcion.html" class="active">Inscripción</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+    </ul>
+    <a href="inscripcion.html" class="btn-primary" id="navCta" style="display:none">Sumate!</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <header class="page-header">
+    <h1 class="anim">¿Cómo me sumo?</h1>
+  </header>
+
+  <div class="inscripcion-intro anim">
+    <p>Fácil, completá el formulario de esta página con tus datos y te agregamos a la lista de participantes.</p>
+  </div>
+
+  <!-- COUNTDOWN -->
+  <div class="countdown-label">Estamos en la cuenta regresiva...</div>
+  <div class="countdown-bar">
+    <div class="countdown-inner">
+      <div class="countdown-unit"><span class="countdown-number" id="cd-days">00</span><span class="countdown-text">Days</span></div>
+      <div class="countdown-unit"><span class="countdown-number" id="cd-hours">00</span><span class="countdown-text">Hours</span></div>
+      <div class="countdown-unit"><span class="countdown-number" id="cd-minutes">00</span><span class="countdown-text">Minutes</span></div>
+      <div class="countdown-unit"><span class="countdown-number" id="cd-seconds">00</span><span class="countdown-text">Seconds</span></div>
+    </div>
+  </div>
+
+  <section style="max-width:100%;margin:0 auto;padding:40px 48px 0px;">
+    <div class="inscripcion-closed anim">
+      <h2>INSCRIPCIÓN ABIERTA</h2>
+      <p>Todavía tenés tiempo de inscribirte, acordate que los cupos son limitados.</p>
+    </div>
+  </section>
+
+  <section class="inscripcion-section">
+    <h2 class="anim">LLENÁ EL FORMULARIO PARA FORMAR PARTE</h2>
+
+    <form id="inscripcionForm" novalidate>
+      <div class="form-grid">
+        <div class="form-group"><label for="nombre">Nombre</label><input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required></div>
+        <div class="form-group"><label for="apellido">Apellido</label><input type="text" id="apellido" name="apellido" placeholder="Tu apellido" required></div>
+        <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required></div>
+        <div class="form-group"><label for="telefono">Teléfono</label><input type="tel" id="telefono" name="telefono" placeholder="+54 11 0000 0000"></div>
+        <div class="form-group"><label for="dni">DNI</label><input type="text" id="dni" name="dni" placeholder="00.000.000" required></div>
+        <div class="form-group"><label for="fecha_nacimiento">Fecha de nacimiento</label><input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required></div>
+        <div class="form-group full">
+          <label>Modalidad</label>
+          <div class="form-radio-group">
+            <label class="form-radio"><input type="radio" name="modalidad" value="recreativa" checked> Recreativa</label>
+            <label class="form-radio"><input type="radio" name="modalidad" value="competitiva"> Competitiva</label>
+          </div>
+        </div>
+        <div class="form-group full">
+          <label for="talle">Talle de remera (kit)</label>
+          <select id="talle" name="talle" required>
+            <option value="" disabled selected>Seleccioná tu talle</option>
+            <option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option>
+          </select>
+        </div>
+        <div class="form-group full"><label for="contacto_emergencia">Contacto de emergencia</label><input type="text" id="contacto_emergencia" name="contacto_emergencia" placeholder="Nombre y teléfono"></div>
+        <div class="form-group full"><label for="comentarios">Comentarios o condiciones médicas relevantes</label><textarea id="comentarios" name="comentarios" placeholder="Opcional — alergias, lesiones, etc."></textarea></div>
+      </div>
+      <div class="form-submit">
+        <button type="submit" class="btn-primary" style="width:fit-content;">Confirmar inscripción</button>
+        <p class="form-note">Los cupos son limitados. Al enviar aceptás las condiciones del evento.</p>
+      </div>
+    </form>
+
+    <div id="successMsg" style="display:none; margin-top:48px; padding:40px; background:var(--blue-light); border-radius:8px; text-align:center;">
+      <p style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;margin-bottom:12px;">¡Listo!</p>
+      <p style="font-size:1rem;font-weight:300;color:var(--gray);">Tu inscripción fue recibida. Te enviamos un correo de confirmación.</p>
+    </div>
+  </section>
+
+  <div class="ubicacion-cierre anim">
+    <h2>¡NOS VEMOS!</h2>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <ul class="footer-links">
+        <li><a href="evento.html">Evento</a></li>
+        <li><a href="ubicacion.html">Ubicación</a></li>
+        <li><a href="inscripcion.html">Inscripción</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+      <div class="footer-brand">
+        <div class="footer-skater-wrap" id="skaterWrap">
+          <div class="footer-skater" id="footerSkater">
+            <svg width="32" height="70" viewBox="0 0 32 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12.4248 44.999L9 64.5H14V69.999L12 69L10 70L8 69L7.33789 69.999L5.5 69L4 70L2.75 69.999L7.33789 44.999H12.4248ZM22.3379 21.5869L31.751 32.6748L27.9258 35.9121L22.3379 29.3125V45H24.8379V64H31.751V70L30 69L28.5 70L27 69L25.5 70L23.5 69L22.5 70H19.8379V45H17.3379V15H22.3379V21.5869ZM4.6748 35.8877L0 34.1123L7.22461 15H12.5752L4.6748 35.8877ZM17.3389 9.9502H12.3389V0H17.3389V9.9502Z" fill="black"/>
+            </svg>
+          </div>
+          <span class="footer-dgn" id="footerDgn">Escuela Da Vinci - DGN5CV - Silvina Rossatti</span>
+        </div>
+      </div>
+      <div class="footer-contact">
+        <strong>Contacto:</strong>
+        <a href="mailto:consultas@rollingba.edu.ar">consultas@rollingba.edu.ar</a>
+        <span style="display:block;margin-top:4px;">Composición Digital · 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
