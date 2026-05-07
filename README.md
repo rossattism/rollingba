@@ -12,7 +12,8 @@
 
 <!-- BODY -->
 ## Website
-Check the website <a href="https://rollingba.netlify.app/">here</a>
+Check the github deployment <a href="https://rossattism.github.io/rollingba">here</a>
+Check the Netlify website <a href="https://rollingba.netlify.app/">here</a>
 
 <!-- FOOTER -->
 
