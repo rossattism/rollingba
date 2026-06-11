@@ -66,7 +66,7 @@ if (form) {
   const SPEED      = 60;   
   const PAUSE_MS   = 2200;
   const ERASED_GAP = 0.2;
-  const EXTRA      = 40;   // 👉 cuánto se pasa en ambos lados
+  const EXTRA      = 40;   // esto es cuánto se pasa en ambos lados, seguir modificando si necesito
 
   let pos      = 0;
   let dir      = 1;
