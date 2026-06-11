@@ -128,6 +128,7 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
 }
 
 .hero-text {
@@ -232,8 +233,9 @@ nav {
 /* ─── HOME: EVENT / MAP SECTION ─── */
 .section-event {
   padding: 88px 48px 56px;
-  max-width: 1200px;
+  max-width: 860px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .section-event .date-label {
@@ -248,7 +250,7 @@ nav {
   font-size: clamp(2.5rem, 7vw, 5rem);
   line-height: 1.0;
   color: var(--black);
-  max-width: 600px;
+  max-width: 100%;
   margin-bottom: 20px;
 }
 
@@ -256,7 +258,7 @@ nav {
   font-size: 1rem;
   font-weight: 300;
   color: var(--gray);
-  max-width: 520px;
+  max-width: 100%;
   margin-bottom: 36px;
 }
 
@@ -273,8 +275,9 @@ nav {
 /* ─── HOME: INSCRIPTION ─── */
 .section-inscripcion {
   padding: 88px 48px;
-  max-width: 1200px;
+  max-width: 860px;
   margin: 0 auto;
+  width: 100%;
   border-top: 1px solid var(--border);
 }
 
@@ -289,7 +292,7 @@ nav {
   font-size: 1rem;
   font-weight: 300;
   color: var(--gray);
-  max-width: 480px;
+  max-width: 100%;
   margin-bottom: 28px;
 }
 
@@ -755,44 +758,172 @@ footer {
 .footer-credit { font-size: 0.75rem; color: var(--gray); }
 
 /* ─── ANIMATIONS ─── */
+
+/* Fade up — elementos de texto y secciones */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+/* Fade in suave — elementos de fondo o imagen */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Slide desde la izquierda — hero km */
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Slide desde la derecha — hero image */
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Scale up suave — banners y CTAs */
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Pulse sutil — countdown numbers */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.04); }
+}
+
+/* Underline grow — nav links hover */
+@keyframes underlineGrow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* ── Clases de animación de entrada (.anim + .visible) ── */
 .anim { opacity: 0; }
 .anim.visible { animation: fadeUp 0.6s ease forwards; }
 
+/* Hero KM: entra desde la izquierda */
+.hero-km.anim.visible {
+  animation: slideInLeft 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Hero tagline: fade puro con pequeño delay */
+.hero-tagline.anim.visible {
+  animation: fadeUp 0.7s ease 0.15s forwards;
+}
+
+/* Hero image: entra desde la derecha */
+.hero-image-wrapper.anim.visible {
+  animation: slideInRight 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+}
+
+/* Banners (inscripción abierta, closed): scale in */
+.inscripcion-closed.anim.visible,
+.inscripcion-banner-inner.anim.visible {
+  animation: scaleIn 0.55s ease forwards;
+}
+
+/* FAQ items: fadeUp con stagger via nth-child */
+.faq-item.anim.visible { animation: fadeUp 0.5s ease forwards; }
+.faq-item:nth-child(2).anim.visible  { animation-delay: 0.05s; }
+.faq-item:nth-child(3).anim.visible  { animation-delay: 0.10s; }
+.faq-item:nth-child(4).anim.visible  { animation-delay: 0.15s; }
+.faq-item:nth-child(5).anim.visible  { animation-delay: 0.20s; }
+.faq-item:nth-child(6).anim.visible  { animation-delay: 0.25s; }
+.faq-item:nth-child(7).anim.visible  { animation-delay: 0.30s; }
+.faq-item:nth-child(8).anim.visible  { animation-delay: 0.35s; }
+.faq-item:nth-child(9).anim.visible  { animation-delay: 0.40s; }
+.faq-item:nth-child(10).anim.visible { animation-delay: 0.45s; }
+.faq-item:nth-child(11).anim.visible { animation-delay: 0.50s; }
+
+/* Page header h1: slide desde arriba */
+.page-header h1.anim.visible {
+  animation: fadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Map container: fade in */
+.map-container.anim.visible,
+.ubicacion-map.anim.visible {
+  animation: fadeIn 0.8s ease 0.2s forwards;
+}
+
+/* ── Hover con underline animado en nav ── */
+.nav-links a {
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 100%; height: 1.5px;
+  background: var(--black);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.nav-links a:hover::after,
+.nav-links a.active::after { transform: scaleX(1); }
+/* Quitar el opacity hover que ya existía para que no compita */
+.nav-links a:hover { opacity: 1; }
+
+/* ── Transición suave en inputs del form ── */
+input, select, textarea {
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--black);
+  box-shadow: 0 0 0 3px rgba(13,13,13,0.07);
+}
+
+/* ── Hover lift en hero image ── */
+.hero-image-wrapper img {
+  transition: transform 0.4s ease;
+}
+.hero-image-wrapper:hover img { transform: scale(1.015); }
+
+/* ── Pulse en countdown al cargar ── */
+.countdown-number {
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+
 /* ─── RESPONSIVE ─── */
-/* ─── TABLET (max 1024px) ─── */
-@media (max-width: 1024px) {
-  nav { padding: 0 32px; }
+
+/* ─── DESKTOP (960px – 1280px) ─── */
+@media (min-width: 960px) and (max-width: 1280px) {
+  nav { padding: 0 40px; }
 
   .section-event,
-  .section-inscripcion  { padding-left: 32px; padding-right: 32px; }
-  .section-faq-teaser   { padding-left: 32px; padding-right: 32px; }
+  .section-inscripcion  { padding-left: 40px; padding-right: 40px; }
+  .section-faq-teaser   { padding-left: 40px; padding-right: 40px; }
 
   .evento-intro,
   .evento-subtitle,
   .hero-full,
   .hero-full-img,
-  .evento-date-section  { padding-left: 32px; padding-right: 32px; }
+  .evento-date-section  { padding-left: 40px; padding-right: 40px; }
 
   .faq-section,
-  .faq-contact          { padding-left: 32px; padding-right: 32px; }
+  .faq-contact          { padding-left: 40px; padding-right: 40px; }
 
-  .inscripcion-section  { padding-left: 32px; padding-right: 32px; }
+  .inscripcion-section  { padding-left: 40px; padding-right: 40px; }
 
   .ubicacion-intro,
   .ubicacion-body,
-  .ubicacion-cierre     { padding-left: 32px; padding-right: 32px; }
+  .ubicacion-cierre     { padding-left: 40px; padding-right: 40px; }
 
-  footer                { padding-left: 32px; padding-right: 32px; }
+  .countdown-label,
+  .countdown-bar        { padding-left: 40px; padding-right: 40px; }
+
+  footer                { padding-left: 40px; padding-right: 40px; }
 }
 
-/* ─── MOBILE (max 768px) ─── */
-@media (max-width: 768px) {
-  /* Nav - mobile*/
-  nav { padding: 0 20px; height: 56px; }
+/* ─── TABLET (501px – 959px) ─── */
+@media (min-width: 501px) and (max-width: 959px) {
+  nav { padding: 0 28px; height: 60px; }
   .nav-links, nav > .btn-primary { display: none; }
   .nav-toggle { display: flex; }
 
@@ -800,92 +931,197 @@ footer {
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 56px; left: 0; right: 0;
+    top: 60px; left: 0; right: 0;
     background: var(--white);
     border-bottom: 1px solid var(--border);
-    padding: 24px 20px 32px;
+    padding: 24px 28px 32px;
     gap: 20px;
     align-items: flex-start;
     z-index: 99;
   }
   .nav-links.open a { font-size: 1.1rem; }
 
-  /* Home hero - mobile */
-  .hero { padding-top: 56px; }
+  /* Hero - tablet */
+  .hero { padding-top: 60px; min-height: unset; }
+  .hero-image-wrapper { padding: 0 28px; }
+  .hero-image-wrapper img { height: 340px; }
   .hero-image-wrapper::before { display: none; }
-  .hero-image-wrapper { padding: 0 20px; }
-  .hero-image-wrapper img { height: 240px; }
 
-  /* Countdown - mobile */
-  .countdown-label { padding: 14px 20px; font-size: 0.7rem; }
-  .countdown-bar   { padding: 28px 20px; }
+  /* Countdown - tablet */
+  .countdown-label { padding: 16px 28px; font-size: 0.72rem; }
+  .countdown-bar   { padding: 32px 28px; }
 
-  /* Home sections - mobile */
-  .section-event        { padding: 48px 20px 36px; }
-  .section-inscripcion  { padding: 48px 20px; }
-  .section-faq-teaser   { padding: 48px 20px; }
-  .map-container        { height: 240px; }
+  /* Home sections - tablet */
+  .section-event        { padding: 64px 28px 44px; }
+  .section-inscripcion  { padding: 64px 28px; }
+  .section-faq-teaser   { padding: 60px 28px; }
+  .map-container        { height: 320px; }
 
-  /* Page header - mobile */
-  .page-header { padding-top: 56px; }
-  .page-header h1 { padding: 32px 20px 10px; }
-  .page-header .subtitle { padding: 0 20px 28px; }
+  /* Page header - tablet */
+  .page-header { padding-top: 60px; }
+  .page-header h1 { padding: 40px 28px 14px; }
+  .page-header .subtitle { padding: 0 28px 36px; }
 
-  /* Evento - mobile */
-  .evento-intro         { padding: 0 20px 28px; }
-  .evento-subtitle      { padding: 6px 20px 18px; }
+  /* Evento - tablet */
+  .evento-intro         { padding: 0 28px 32px; }
+  .evento-subtitle      { padding: 8px 28px 20px; }
   .hero-full,
-  .hero-full-img        { padding: 0 20px; }
+  .hero-full-img        { padding: 0 28px; }
   .hero-full img,
-  .hero-full-img img    { height: 220px; }
-  .evento-date-section  { padding: 48px 20px 36px; }
+  .hero-full-img img    { height: 320px; }
+  .evento-date-section  { padding: 56px 28px 40px; }
 
-  /* Ubicacion - mobile */
-  .ubicacion-intro      { padding: 0 20px 36px; }
-  .ubicacion-body       { padding: 40px 20px; }
-  .ubicacion-map        { height: 240px; margin: 24px 0 40px; }
-  .ubicacion-cierre     { padding: 48px 20px 60px; }
+  /* Ubicacion - tablet */
+  .ubicacion-intro      { padding: 0 28px 40px; }
+  .ubicacion-body       { padding: 48px 28px; }
+  .ubicacion-map        { width: 80%; height: 340px; margin: 28px auto 48px; }
+  .ubicacion-cierre     { padding: 56px 28px 72px; }
 
-  /* FAQ - mobile */
-  .faq-section          { padding: 0 20px 60px; }
-  .faq-contact          { padding: 0 20px 72px; }
+  /* FAQ - tablet */
+  .faq-section          { padding: 0 28px 48px; }
+  .faq-contact          { padding: 0 28px 80px; }
 
-  /* Inscripcion - mobile */
-  .inscripcion-section  { padding: 48px 20px 60px; }
-  .form-grid            { grid-template-columns: 1fr; }
+  /* Inscripcion - tablet */
+  .inscripcion-section  { padding: 56px 28px 72px; }
+  .form-grid            { grid-template-columns: 1fr 1fr; }
   .inscripcion-closed,
-  .inscripcion-banner-inner { padding: 32px 20px; }
+  .inscripcion-banner-inner { padding: 40px 28px; }
 
-  /* Footer - mobile */
-  footer { padding: 28px 20px; }
+  /* Footer - tablet */
+  footer { padding: 28px 28px; }
   .footer-inner {
     flex-direction: column;
     align-items: flex-start;
     flex-wrap: wrap;
     gap: 16px;
   }
-  .footer-skater-wrap { width: 180px; flex: none; }
+  .footer-skater-wrap { width: 200px; flex: none; }
   .footer-contact { text-align: left; }
 }
 
-/* ─── SMALL MOBILE (max 480px) ─── */
-@media (max-width: 480px) {
-  .hero-text { padding: 44px 20px 28px; }
+/* ─── SMARTPHONE (0px – 500px) ─── */
+@media (max-width: 500px) {
+  /* Nav - smartphone */
+  nav { padding: 0 16px; height: 52px; }
+  .nav-links, nav > .btn-primary { display: none; }
+  .nav-toggle { display: flex; }
 
-  .countdown-inner { gap: 20px; }
-  .countdown-number { font-size: 2.8rem; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 52px; left: 0; right: 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 16px 28px;
+    gap: 18px;
+    align-items: flex-start;
+    z-index: 99;
+  }
+  .nav-links.open a { font-size: 1.05rem; }
 
-  .section-faq-teaser h2 { font-size: 3.5rem; }
+  /* Hero - smartphone */
+  .hero { padding-top: 52px; min-height: unset; }
+  .hero-text { padding: 40px 16px 24px; }
+  .hero-image-wrapper { padding: 0 16px; }
+  .hero-image-wrapper img { height: 210px; }
+  .hero-image-wrapper::before { display: none; }
 
+  /* Countdown - smartphone */
+  .countdown-label { padding: 12px 16px; font-size: 0.68rem; }
+  .countdown-bar   { padding: 24px 16px; }
+  .countdown-inner { gap: 16px; }
+  .countdown-number { font-size: 2.6rem; }
+
+  /* Home sections - smartphone */
+  .section-event        { padding: 40px 16px 32px; }
+  .section-inscripcion  { padding: 40px 16px; }
+  .section-faq-teaser   { padding: 40px 16px; }
+  .section-faq-teaser h2 { font-size: 3.2rem; }
+  .map-container        { height: 210px; }
+
+  /* Page header - smartphone */
+  .page-header { padding-top: 52px; }
+  .page-header h1 { padding: 28px 16px 8px; }
+  .page-header .subtitle { padding: 0 16px 24px; }
+
+  /* Evento - smartphone */
+  .evento-intro         { padding: 0 16px 24px; }
+  .evento-subtitle      { padding: 6px 16px 16px; }
+  .hero-full,
+  .hero-full-img        { padding: 0 16px; }
   .hero-full img,
-  .hero-full-img img { height: 190px; }
+  .hero-full-img img    { height: 180px; }
+  .evento-date-section  { padding: 40px 16px 32px; }
 
-  .faq-question { font-size: 1rem; }
+  /* Ubicacion - smartphone */
+  .ubicacion-intro      { padding: 0 16px 32px; }
+  .ubicacion-body       { padding: 36px 16px; }
+  .ubicacion-map        { width: 100%; height: 210px; margin: 20px 0 36px; }
+  .ubicacion-cierre     { padding: 40px 16px 56px; }
+  .ubicacion-cierre h2  { font-size: 2.6rem; }
 
-  .inscripcion-section h2 { font-size: 1.6rem; }
+  /* FAQ - smartphone */
+  .faq-section          { padding: 0 16px 48px; }
+  .faq-contact          { padding: 0 16px 64px; }
+  .faq-question         { font-size: 0.975rem; }
 
-  .ubicacion-cierre h2 { font-size: 2.8rem; }
+  /* Inscripcion - smartphone */
+  .inscripcion-section  { padding: 40px 16px 56px; }
+  .inscripcion-section h2 { font-size: 1.55rem; }
+  .form-grid            { grid-template-columns: 1fr; }
+  .inscripcion-closed,
+  .inscripcion-banner-inner { padding: 28px 16px; }
 
-  .footer-links { gap: 18px; flex-wrap: wrap; }
-  .footer-skater-wrap { width: 150px; }
+  /* Footer - smartphone */
+  footer { padding: 24px 16px; }
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .footer-links { gap: 14px; flex-wrap: wrap; }
+  .footer-skater-wrap { width: 150px; flex: none; }
+  .footer-contact { text-align: left; }
+}
+
+/* ─── Respeta preferencia de movimiento reducido ─── */
+@media (prefers-reduced-motion: reduce) {
+  .anim, .anim.visible,
+  .hero-km.anim.visible,
+  .hero-tagline.anim.visible,
+  .hero-image-wrapper.anim.visible,
+  .inscripcion-closed.anim.visible,
+  .faq-item.anim.visible,
+  .page-header h1.anim.visible,
+  .map-container.anim.visible,
+  .ubicacion-map.anim.visible {
+    animation: none;
+    opacity: 1;
+  }
+  .hero-image-wrapper:hover img { transform: none; }
+  .nav-links a::after { transition: none; }
+}
+
+/* ─── ANIMACIÓN COLECTIVO (ubicacion.html) ─── */
+.bus-wrap {
+  position: relative;
+  width: 100%;
+  height: 64px;
+  margin: 0;               /* sin margen: lo ubica el flujo entre mapa y borde */
+  overflow: hidden;
+}
+
+.bus-vehicle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-60%);
+  will-change: transform, left;
+  background: transparent;
+}
+
+.bus-vehicle svg {
+  display: block;
+  background: transparent;
 }

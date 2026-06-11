@@ -22,7 +22,7 @@ if (document.getElementById('cd-days')) {
 // ── Nav ──
 const navCta = document.getElementById('navCta');
 if (navCta) {
-  const updateCta = () => navCta.style.display = window.innerWidth > 768 ? 'inline-flex' : 'none';
+  const updateCta = () => navCta.style.display = window.innerWidth >= 960 ? 'inline-flex' : 'none';
   updateCta();
   window.addEventListener('resize', updateCta);
 }
@@ -170,6 +170,63 @@ if (form) {
       lastTs = null;
       raf = requestAnimationFrame(tick);
     }, 800);
+  }
+
+  setup();
+})();
+// ── Animacion colectivo (ubicacion) ──
+(function () {
+  const bus  = document.getElementById('busVehicle');
+  const wrap = document.getElementById('busWrap');
+  if (!bus || !wrap) return;
+
+  const BUS_W  = 110;
+  const SPEED  = 80;   // px/segundo — un poco más rápido que el skater
+  const EXTRA  = 20;
+
+  let pos    = -BUS_W - EXTRA;
+  let dir    = 1;
+  let lastTs = null;
+  let target = 0;
+  let minX   = 0;
+
+  function setup() {
+    requestAnimationFrame(() => {
+      const wrapW = wrap.offsetWidth;
+      target = wrapW + EXTRA;
+      minX   = -BUS_W - EXTRA;
+      pos    = minX;
+      requestAnimationFrame(tick);
+    });
+  }
+
+  function setBusPos(x, facingRight, time) {
+    const bounce = Math.abs(Math.sin(time * 8)) * 1.2; // ruedas: leve rebote vertical
+    bus.style.left      = x + 'px';
+    bus.style.transform = facingRight
+      ? `translateY(calc(-60% + ${bounce}px)) scaleX(1)`
+      : `translateY(calc(-60% + ${bounce}px)) scaleX(-1)`;
+  }
+
+  function tick(ts) {
+    if (lastTs === null) lastTs = ts;
+    const dt = (ts - lastTs) / 1000;
+    lastTs = ts;
+
+    pos += SPEED * dt * dir;
+
+    if (dir === 1 && pos >= target) {
+      pos = target;
+      dir = -1;
+      lastTs = null;
+    } else if (dir === -1 && pos <= minX) {
+      pos = minX;
+      dir = 1;
+      lastTs = null;
+    }
+
+    setBusPos(pos, dir === 1, ts / 1000);
+    requestAnimationFrame(tick);
   }
 
   setup();
