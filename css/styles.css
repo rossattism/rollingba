@@ -693,6 +693,270 @@ textarea { resize: vertical; min-height: 100px; }
   text-align: center;
 }
 
+/* ─── INSCRIPCION BANNER (also used on evento) ─── */
+.inscripcion-banner-section {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 40px 48px;
+}
+
+/* ─── FORM SUCCESS ─── */
+.form-success {
+  margin-top: 48px;
+  padding: 40px;
+  background: var(--blue-light);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.form-success-title {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.form-success-msg {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--gray);
+}
+
+.form-submit .btn-primary { width: fit-content; }
+
+/* ─── LUBRICANTE: HERO ─── */
+.lubricante-hero {
+  padding-top: 64px;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 0;
+  overflow: hidden;
+}
+
+.lubricante-hero-text {
+  padding: 80px 48px;
+  max-width: 560px;
+  margin-left: auto;
+}
+
+.lubricante-eyebrow {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #f5c100;
+  background: var(--black);
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.lubricante-hero-text h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 7vw, 6.5rem);
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  color: var(--black);
+  margin-bottom: 24px;
+}
+
+.lubricante-hero-text p {
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 300;
+  color: var(--gray);
+  line-height: 1.6;
+  max-width: 420px;
+  margin-bottom: 36px;
+}
+
+/* ─── LUBRICANTE: 3D VIEWER ─── */
+.lubricante-viewer-wrap {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #f0ede8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.lubricante-viewer-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 60% 50%, rgba(91,127,166,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+#model-canvas {
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  display: block;
+}
+
+#model-canvas:active { cursor: grabbing; }
+
+.viewer-hint {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray);
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.viewer-hint.hidden { opacity: 0; }
+.viewer-hint svg { width: 18px; height: 18px; opacity: 0.6; }
+
+/* ─── LUBRICANTE: FEATURES ─── */
+.lubricante-features {
+  background: var(--black);
+  padding: 96px 48px;
+}
+
+.lubricante-features-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.lubricante-features h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  color: var(--white);
+  margin-bottom: 64px;
+  letter-spacing: 0.02em;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.feature-item {
+  border-top: 1px solid rgba(245,244,240,0.15);
+  padding-top: 24px;
+}
+
+.feature-number {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  color: #f5c100;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.feature-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 8px;
+  letter-spacing: 0.03em;
+}
+
+.feature-desc {
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: rgba(245,244,240,0.55);
+  line-height: 1.6;
+}
+
+/* ─── LUBRICANTE: PRODUCT INFO (centered text only) ─── */
+.lubricante-info {
+  padding: 96px 48px;
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.lubricante-info-text h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 0.95;
+  color: var(--black);
+  margin-bottom: 28px;
+  letter-spacing: 0.02em;
+}
+
+.lubricante-info-text p {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--gray);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.lubricante-specs {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  text-align: left;
+}
+
+.lubricante-spec {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.lubricante-spec:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.spec-label {
+  font-weight: 600;
+  color: var(--black);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.spec-value {
+  font-weight: 300;
+  color: var(--gray);
+}
+
+/* ─── LUBRICANTE: CTA ─── */
+.lubricante-cta {
+  background: #f5c100;
+  padding: 80px 48px;
+  text-align: center;
+}
+
+.lubricante-cta h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  color: var(--black);
+  line-height: 0.95;
+  margin-bottom: 16px;
+  letter-spacing: 0.02em;
+}
+
+.lubricante-cta p {
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgba(13,13,13,0.65);
+  margin-bottom: 0;
+}
+
 /* ─── FOOTER ─── */
 footer {
   background: var(--white);
@@ -755,7 +1019,7 @@ footer {
 .footer-contact strong { font-weight: 500; color: var(--black); display: block; margin-bottom: 2px; }
 .footer-contact a { color: var(--gray); text-decoration: none; }
 .footer-contact a:hover { color: var(--black); }
-.footer-credit { font-size: 0.75rem; color: var(--gray); }
+.footer-credit { display: block; margin-top: 4px; font-size: 0.75rem; color: var(--gray); }
 
 /* ─── ANIMATIONS ─── */
 
@@ -986,6 +1250,30 @@ input:focus, select:focus, textarea:focus {
   .form-grid            { grid-template-columns: 1fr 1fr; }
   .inscripcion-closed,
   .inscripcion-banner-inner { padding: 40px 28px; }
+  .inscripcion-banner-section { padding: 32px 28px; }
+
+  /* Lubricante - tablet */
+  .lubricante-hero {
+    grid-template-columns: 1fr;
+    min-height: unset;
+    padding-top: 60px;
+  }
+  .lubricante-hero-text {
+    padding: 48px 28px 40px;
+    max-width: 100%;
+    margin-left: 0;
+    text-align: center;
+  }
+  .lubricante-hero-text p { max-width: 100%; margin: 0 auto 32px; }
+  .lubricante-viewer-wrap {
+    height: 60vw;
+    min-height: 320px;
+    max-height: 480px;
+  }
+  .lubricante-features { padding: 64px 28px; }
+  .features-grid       { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  .lubricante-info     { padding: 64px 28px; }
+  .lubricante-cta      { padding: 60px 28px; }
 
   /* Footer - tablet */
   footer { padding: 28px 28px; }
@@ -1072,6 +1360,35 @@ input:focus, select:focus, textarea:focus {
   .form-grid            { grid-template-columns: 1fr; }
   .inscripcion-closed,
   .inscripcion-banner-inner { padding: 28px 16px; }
+  .inscripcion-banner-section { padding: 24px 16px; }
+
+  /* Lubricante - smartphone */
+  .lubricante-hero {
+    grid-template-columns: 1fr;
+    min-height: unset;
+    padding-top: 52px;
+  }
+  .lubricante-hero-text {
+    padding: 40px 16px 32px;
+    max-width: 100%;
+    margin-left: 0;
+    text-align: center;
+  }
+  .lubricante-hero-text h1 { font-size: clamp(3rem, 14vw, 4rem); }
+  .lubricante-hero-text p {
+    max-width: 100%;
+    margin: 0 auto 28px;
+    font-size: 1rem;
+  }
+  .lubricante-viewer-wrap {
+    height: 80vw;
+    min-height: 260px;
+    max-height: 360px;
+  }
+  .lubricante-features { padding: 56px 16px; }
+  .features-grid       { grid-template-columns: 1fr; gap: 24px; }
+  .lubricante-info     { padding: 56px 16px; }
+  .lubricante-cta      { padding: 56px 16px; }
 
   /* Footer - smartphone */
   footer { padding: 24px 16px; }

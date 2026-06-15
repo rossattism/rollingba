@@ -22,7 +22,7 @@ if (document.getElementById('cd-days')) {
 // ── Nav ──
 const navCta = document.getElementById('navCta');
 if (navCta) {
-  const updateCta = () => navCta.style.display = window.innerWidth >= 960 ? 'inline-flex' : 'none';
+  const updateCta = () => { navCta.hidden = window.innerWidth < 960; };
   updateCta();
   window.addEventListener('resize', updateCta);
 }
@@ -32,7 +32,6 @@ const toggle = document.getElementById('navToggle');
 const links  = document.getElementById('navLinks');
 if (toggle && links) {
   toggle.addEventListener('click', () => links.classList.toggle('open'));
-  // Close on link click
   links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
 }
 
@@ -49,9 +48,9 @@ const form = document.getElementById('inscripcionForm');
 if (form) {
   form.addEventListener('submit', function(e) {
     e.preventDefault();
-    this.style.display = 'none';
+    this.hidden = true;
     const msg = document.getElementById('successMsg');
-    if (msg) msg.style.display = 'block';
+    if (msg) msg.hidden = false;
   });
 }
 
@@ -62,11 +61,11 @@ if (form) {
   const wrap    = document.getElementById('skaterWrap');
   if (!skater || !dgn || !wrap) return;
 
-  const SKATER_W   = 26;   
-  const SPEED      = 60;   
+  const SKATER_W   = 26;
+  const SPEED      = 60;
   const PAUSE_MS   = 2200;
   const ERASED_GAP = 0.2;
-  const EXTRA      = 40;   // esto es cuánto se pasa en ambos lados, seguir modificando si necesito
+  const EXTRA      = 40;
 
   let pos      = 0;
   let dir      = 1;
@@ -174,6 +173,7 @@ if (form) {
 
   setup();
 })();
+
 // ── Animacion colectivo (ubicacion) ──
 (function () {
   const bus  = document.getElementById('busVehicle');
@@ -181,7 +181,7 @@ if (form) {
   if (!bus || !wrap) return;
 
   const BUS_W  = 110;
-  const SPEED  = 80;   // px/segundo — un poco más rápido que el skater
+  const SPEED  = 80;
   const EXTRA  = 20;
 
   let pos    = -BUS_W - EXTRA;
@@ -201,7 +201,7 @@ if (form) {
   }
 
   function setBusPos(x, facingRight, time) {
-    const bounce = Math.abs(Math.sin(time * 8)) * 1.2; // ruedas: leve rebote vertical
+    const bounce = Math.abs(Math.sin(time * 8)) * 1.2;
     bus.style.left      = x + 'px';
     bus.style.transform = facingRight
       ? `translateY(calc(-60% + ${bounce}px)) scaleX(1)`

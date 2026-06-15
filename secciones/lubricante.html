@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RollingBA – Sponsor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">
+      <img src="../multimedia/logo-nav.svg" alt="RollingBA">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Inicio</a></li>
+      <li><a href="evento.html">Evento</a></li>
+      <li><a href="ubicacion.html">Ubicación</a></li>
+      <li><a href="inscripcion.html">Inscripción</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="lubricante.html" class="active">Sponsor</a></li>
+    </ul>
+    <a href="inscripcion.html" class="btn-primary d-none d-lg-inline-flex" id="navCta">Sumate!</a>
+    <button class="nav-toggle d-flex d-lg-none" id="navToggle" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="lubricante-hero row g-0 align-items-center">
+    <div class="lubricante-hero-text col-12 col-lg-6 anim">
+      <span class="lubricante-eyebrow">Nuevo producto</span>
+      <h1>¿CONOCÉS ESTE PRODUCTO?</h1>
+      <p>Probá el nuevo WD-40 Skater Edition, pensado para mantener tus rollers a tope por muchos años. Lubrica tus rulemanes y los protege del polvo y la humedad. Además, tiene un aplicador de precisión.</p>
+      <a href="#donde-encontrarlo" class="btn-outline">¿Dónde comprarlo?</a>
+    </div>
+
+    <div class="lubricante-viewer-wrap col-12 col-lg-6">
+      <canvas id="model-canvas"></canvas>
+      <div class="viewer-hint" id="viewerHint">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M7 11.5V14m0-6V5a2 2 0 0 1 4 0v6m0 0V5a2 2 0 0 1 4 0v4m0 0V9a2 2 0 0 1 4 0v8a7 7 0 0 1-7 7H9a7 7 0 0 1-6.16-10.36L4.5 11.5"/>
+        </svg>
+        Arrastrá para rotar
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="lubricante-features">
+    <div class="lubricante-features-inner">
+      <h2 class="anim">Por qué es ideal<br>para tus rollers</h2>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+        <div class="feature-item col anim">
+          <div class="feature-number">01</div>
+          <div class="feature-title">Lubricante seco PTFE</div>
+          <div class="feature-desc">Fórmula seca que no atrae polvo ni suciedad, ideal para rulemanes de precision.</div>
+        </div>
+        <div class="feature-item col anim">
+          <div class="feature-number">02</div>
+          <div class="feature-title">Aplicador de precisión</div>
+          <div class="feature-desc">Tubo capilar incluido para llegar exactamente donde necesitás sin desperdiciar producto.</div>
+        </div>
+        <div class="feature-item col anim">
+          <div class="feature-number">03</div>
+          <div class="feature-title">Protección duradera</div>
+          <div class="feature-desc">Crea una película protectora que resiste el polvo, la humedad, la oxidación y la corrosión.</div>
+        </div>
+        <div class="feature-item col anim">
+          <div class="feature-number">04</div>
+          <div class="feature-title">Sin silicona</div>
+          <div class="feature-desc">No contiene silicona, compatible con todos los tipos de rulemanes y superficies de skating.</div>
+        </div>
+        <div class="feature-item col anim">
+          <div class="feature-number">05</div>
+          <div class="feature-title">Contenido neto</div>
+          <div class="feature-desc">3.38 oz / 100 g en formato compacto y liviano, perfecto para llevarlo a cada salida.</div>
+        </div>
+        <div class="feature-item col anim">
+          <div class="feature-number">06</div>
+          <div class="feature-title">Diseño exclusivo</div>
+          <div class="feature-desc">Edición especial Skater con gráficas únicas y mosquetón integrado para colgar en tu bolso.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT DETAIL -->
+  <section class="lubricante-info">
+    <div class="lubricante-info-text anim">
+      <h2>WD-40 SPECIALIST SKATING</h2>
+      <p>Especialmente formulado para las exigencias del patinaje urbano. Mantiene tus rulemanes en movimiento constante, sesión tras sesión, con mínimo mantenimiento.</p>
+      <p>El lubricante seco PTFE penetra en los rodamientos, reduce la fricción y crea una capa protectora que dura mucho más que los aceites convencionales.</p>
+      <div class="lubricante-specs">
+        <div class="lubricante-spec">
+          <span class="spec-label">Tipo</span>
+          <span class="spec-value">Lubricante seco PTFE</span>
+        </div>
+        <div class="lubricante-spec">
+          <span class="spec-label">Contenido</span>
+          <span class="spec-value">100 g / 110 ml</span>
+        </div>
+        <div class="lubricante-spec">
+          <span class="spec-label">Silicona</span>
+          <span class="spec-value">No contiene</span>
+        </div>
+        <div class="lubricante-spec">
+          <span class="spec-label">Aplicador</span>
+          <span class="spec-value">Tubo de precisión incluido</span>
+        </div>
+        <div class="lubricante-spec">
+          <span class="spec-label">Ideal para</span>
+          <span class="spec-value">Rulemanes, cables, bisagras</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHERE TO BUY CTA -->
+  <section class="lubricante-cta" id="donde-encontrarlo">
+    <h2 class="anim">¡BUSCALO EN TU TIENDA O SUPER MÁS CERCANO!</h2>
+    <p class="anim">Disponible en tiendas de artículos deportivos y supermercados de todo el país.</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner d-flex flex-column flex-lg-row align-items-start align-items-lg-center justify-content-lg-between gap-3 flex-wrap">
+      <ul class="footer-links">
+        <li><a href="evento.html">Evento</a></li>
+        <li><a href="ubicacion.html">Ubicación</a></li>
+        <li><a href="inscripcion.html">Inscripción</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="lubricante.html">Sponsor</a></li>
+      </ul>
+      <div class="footer-brand">
+        <div class="footer-skater-wrap" id="skaterWrap">
+          <div class="footer-skater" id="footerSkater">
+            <svg width="32" height="70" viewBox="0 0 32 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12.4248 44.999L9 64.5H14V69.999L12 69L10 70L8 69L7.33789 69.999L5.5 69L4 70L2.75 69.999L7.33789 44.999H12.4248ZM22.3379 21.5869L31.751 32.6748L27.9258 35.9121L22.3379 29.3125V45H24.8379V64H31.751V70L30 69L28.5 70L27 69L25.5 70L23.5 69L22.5 70H19.8379V45H17.3379V15H22.3379V21.5869ZM4.6748 35.8877L0 34.1123L7.22461 15H12.5752L4.6748 35.8877ZM17.3389 9.9502H12.3389V0H17.3389V9.9502Z" fill="black"/>
+            </svg>
+          </div>
+          <span class="footer-dgn" id="footerDgn">Escuela Da Vinci - DGN5CV - Silvina Rossatti</span>
+        </div>
+      </div>
+      <div class="footer-contact text-start text-lg-end">
+        <strong>Contacto:</strong>
+        <a href="mailto:consultas@rollingba.edu.ar">consultas@rollingba.edu.ar</a>
+        <span class="footer-credit">Composición Digital · 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/three.min.js"></script>
+  <script src="../js/GLTFLoader.js"></script>
+  <script src="../js/wd40-data.js"></script>
+  <script src="../js/main.js"></script>
+
+  <script>
+    (function () {
+      const canvas = document.getElementById('model-canvas');
+      const hint   = document.getElementById('viewerHint');
+      if (!canvas || typeof THREE === 'undefined' || typeof THREE.GLTFLoader === 'undefined') return;
+
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.outputEncoding = THREE.sRGBEncoding;
+      renderer.shadowMap.enabled = true;
+
+      const scene = new THREE.Scene();
+      scene.background = null;
+
+      const camera = new THREE.PerspectiveCamera(40, 1, 0.01, 100);
+      camera.position.set(0, 0, 0.55);
+
+      const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
+      scene.add(ambientLight);
+
+      const dirLight1 = new THREE.DirectionalLight(0xffffff, 2.5);
+      dirLight1.position.set(2, 4, 3);
+      scene.add(dirLight1);
+
+      const dirLight2 = new THREE.DirectionalLight(0xc8d8ed, 1.2);
+      dirLight2.position.set(-3, -1, 2);
+      scene.add(dirLight2);
+
+      const rimLight = new THREE.DirectionalLight(0xf5c100, 0.4);
+      rimLight.position.set(0, -3, -2);
+      scene.add(rimLight);
+
+      function resize() {
+        const w = canvas.parentElement.clientWidth;
+        const h = canvas.parentElement.clientHeight;
+        renderer.setSize(w, h);
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      let isDragging   = false;
+      let prevX = 0, prevY = 0;
+      let rotX = -0.15, rotY = 0.3;
+      let velX = 0, velY = 0;
+      let autoRotate   = true;
+      let hintHidden   = false;
+      const AUTO_SPEED = 0.003;
+      const DAMPING    = 0.88;
+
+      canvas.addEventListener('pointerdown', e => {
+        isDragging = true;
+        prevX = e.clientX;
+        prevY = e.clientY;
+        autoRotate = false;
+        velX = velY = 0;
+        if (!hintHidden) {
+          hintHidden = true;
+          hint.classList.add('hidden');
+        }
+        canvas.setPointerCapture(e.pointerId);
+      });
+
+      canvas.addEventListener('pointermove', e => {
+        if (!isDragging) return;
+        const dx = e.clientX - prevX;
+        const dy = e.clientY - prevY;
+        velX = dy * 0.008;
+        velY = dx * 0.008;
+        rotX += velX;
+        rotY += velY;
+        rotX = Math.max(-Math.PI / 2.5, Math.min(Math.PI / 2.5, rotX));
+        prevX = e.clientX;
+        prevY = e.clientY;
+      });
+
+      canvas.addEventListener('pointerup', () => { isDragging = false; });
+      canvas.addEventListener('pointercancel', () => { isDragging = false; });
+
+      let lastTouch = null;
+      canvas.addEventListener('touchstart', e => {
+        e.preventDefault();
+        lastTouch = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        autoRotate = false;
+        if (!hintHidden) { hintHidden = true; hint.classList.add('hidden'); }
+      }, { passive: false });
+
+      canvas.addEventListener('touchmove', e => {
+        e.preventDefault();
+        if (!lastTouch) return;
+        const dx = e.touches[0].clientX - lastTouch.x;
+        const dy = e.touches[0].clientY - lastTouch.y;
+        velX = dy * 0.008;
+        velY = dx * 0.008;
+        rotX = Math.max(-Math.PI / 2.5, Math.min(Math.PI / 2.5, rotX + velX));
+        rotY += velY;
+        lastTouch = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      }, { passive: false });
+
+      canvas.addEventListener('touchend', () => { lastTouch = null; });
+
+      const loader = new THREE.GLTFLoader();
+      let modelGroup = null;
+
+      function setupLoadedModel(gltf) {
+        const group = gltf.scene;
+        group.traverse(child => {
+          if (child.isMesh) {
+            const geo = child.geometry;
+            if (geo && !geo.attributes.normal) geo.computeVertexNormals();
+            if (Array.isArray(child.material)) {
+              child.material.forEach(m => { m.side = THREE.DoubleSide; });
+            } else if (child.material) {
+              child.material.side = THREE.DoubleSide;
+            }
+          }
+        });
+
+        const box = new THREE.Box3().setFromObject(group);
+        const size = box.getSize(new THREE.Vector3());
+        const maxDim = Math.max(size.x, size.y, size.z);
+        if (!maxDim || !isFinite(maxDim)) throw new Error('Invalid model bounds');
+        const scale = (0.35 * 0.75) / maxDim;
+        group.scale.setScalar(scale);
+
+        const center = box.getCenter(new THREE.Vector3());
+        group.position.sub(center.multiplyScalar(scale));
+        group.rotation.x = 0.1;
+        return group;
+      }
+
+      function dataUrlToArrayBuffer(dataUrl) {
+        const commaIdx = dataUrl.indexOf(',');
+        const b64 = dataUrl.slice(commaIdx + 1);
+        const binStr = atob(b64);
+        const len = binStr.length;
+        const bytes = new Uint8Array(len);
+        for (let i = 0; i < len; i++) bytes[i] = binStr.charCodeAt(i);
+        return bytes.buffer;
+      }
+
+      if (typeof window.WD40_GLB_DATA_URL === 'string') {
+        try {
+          const buffer = dataUrlToArrayBuffer(window.WD40_GLB_DATA_URL);
+          loader.parse(buffer, '', (gltf) => {
+            modelGroup = setupLoadedModel(gltf);
+            scene.add(modelGroup);
+          }, (err) => console.error('GLTFLoader.parse error:', err));
+        } catch (err) {
+          console.error('base64 decode error:', err);
+        }
+      } else {
+        loader.load('../multimedia/wd40.glb', (gltf) => {
+          modelGroup = setupLoadedModel(gltf);
+          scene.add(modelGroup);
+        }, undefined, (err) => console.error('GLTFLoader.load error:', err));
+      }
+
+      function animate() {
+        requestAnimationFrame(animate);
+
+        if (modelGroup) {
+          if (autoRotate) {
+            rotY += AUTO_SPEED;
+          } else if (!isDragging && !lastTouch) {
+            rotX += velX;
+            rotY += velY;
+            rotX = Math.max(-Math.PI / 2.5, Math.min(Math.PI / 2.5, rotX));
+            velX *= DAMPING;
+            velY *= DAMPING;
+            if (Math.abs(velX) < 0.0002 && Math.abs(velY) < 0.0002) {
+              velX = velY = 0;
+              autoRotate = true;
+            }
+          }
+          modelGroup.rotation.x = rotX;
+          modelGroup.rotation.y = rotY;
+        }
+
+        renderer.render(scene, camera);
+      }
+
+      animate();
+    })();
+  </script>
+
+</body>
+</html>
