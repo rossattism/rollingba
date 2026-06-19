@@ -11,9 +11,12 @@
 > RollingBA is a web made for the first exam in the subject "Digital Compisition" in the career Digital Graphic Design in Da Vinci.
 
 <!-- BODY -->
-## Website
-Check the github deployment <a href="https://rossattism.github.io/rollingba">here</a>
-Check the Netlify website <a href="https://rollingba.netlify.app/">here</a>
+## First Website
+Check it <a href="https://rollingba.netlify.app/">here</a> in Netlify.
+
+## Final Website
+Check it <a href="https://rossattism.github.io/rollingba">here</a>.
+
 
 <!-- FOOTER -->
 
