@@ -1263,7 +1263,6 @@ input:focus, select:focus, textarea:focus {
     padding: 3rem 1.75rem 2.5rem;
     max-width: 100%;
     margin-left: 0;
-    margin-right: 2rem;
     text-align: center;
   }
   .sponsor-hero-text p { max-width: 100%; margin: 0 auto 2rem; }
