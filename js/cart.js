@@ -1,12 +1,11 @@
 // ── Carrito de compras (WD-40 Skater Edition) ──
-// Carrito en memoria: se reinicia al recargar la página.
 (function () {
 
   const PRODUCT = {
     id: 'wd40-skater-edition',
     name: 'WD-40 Skater Edition',
-    price: 8500,
-    image: '../multimedia/wd40.glb'
+    price: 15850,
+    maxQty: 2
   };
 
   let cart = []; // [{ id, name, price, qty }]
@@ -24,11 +23,16 @@
     return cart.reduce((sum, item) => sum + item.qty, 0);
   }
 
+  function getCurrentQtyInCart() {
+    const existing = cart.find(item => item.id === PRODUCT.id);
+    return existing ? existing.qty : 0;
+  }
+
   // ── Referencias DOM ──
-  const qtyInput     = document.getElementById('qtyInput');
-  const qtyMinusBtn  = document.getElementById('qtyMinus');
-  const qtyPlusBtn   = document.getElementById('qtyPlus');
-  const addToCartBtn = document.getElementById('addToCartBtn');
+  const qtyInput     = document.getElementById('ctaQtyInput');
+  const qtyMinusBtn  = document.getElementById('ctaQtyMinus');
+  const qtyPlusBtn   = document.getElementById('ctaQtyPlus');
+  const addToCartBtn = document.getElementById('ctaAddToCartBtn');
 
   const cartCountEl   = document.getElementById('cartCount');
   const cartItemsList = document.getElementById('cartItemsList');
@@ -41,38 +45,70 @@
   // Si no estamos en la página con tienda, no hacemos nada.
   if (!addToCartBtn) return;
 
-  // ── Stepper de cantidad ──
+  // ── Stepper de cantidad (máximo 2 por persona) ──
   function clampQty(value) {
     const n = parseInt(value, 10);
     if (isNaN(n) || n < 1) return 1;
-    if (n > 20) return 20;
-    return n;
+    const inCart = getCurrentQtyInCart();
+    const maxAllowed = Math.max(1, PRODUCT.maxQty - inCart);
+    return Math.min(n, maxAllowed);
+  }
+
+  function updateStepperLimits() {
+    const inCart = getCurrentQtyInCart();
+    const remaining = PRODUCT.maxQty - inCart;
+    if (remaining <= 0) {
+      addToCartBtn.disabled = true;
+      addToCartBtn.textContent = 'Límite alcanzado (máx. 2)';
+      qtyInput.value = 0;
+      qtyMinusBtn.disabled = true;
+      qtyPlusBtn.disabled = true;
+    } else {
+      addToCartBtn.disabled = false;
+      addToCartBtn.textContent = 'Agregar al carrito';
+      const current = parseInt(qtyInput.value, 10) || 1;
+      qtyInput.value = Math.min(current, remaining);
+      qtyInput.max = remaining;
+      qtyMinusBtn.disabled = parseInt(qtyInput.value) <= 1;
+      qtyPlusBtn.disabled  = parseInt(qtyInput.value) >= remaining;
+    }
   }
 
   qtyMinusBtn.addEventListener('click', () => {
     qtyInput.value = clampQty(parseInt(qtyInput.value, 10) - 1);
+    updateStepperLimits();
   });
 
   qtyPlusBtn.addEventListener('click', () => {
     qtyInput.value = clampQty(parseInt(qtyInput.value, 10) + 1);
+    updateStepperLimits();
   });
 
   qtyInput.addEventListener('change', () => {
     qtyInput.value = clampQty(qtyInput.value);
+    updateStepperLimits();
   });
 
   // ── Agregar al carrito ──
   addToCartBtn.addEventListener('click', () => {
-    const qty = clampQty(qtyInput.value);
-    const existing = cart.find(item => item.id === PRODUCT.id);
+    const inCart = getCurrentQtyInCart();
+    const remaining = PRODUCT.maxQty - inCart;
+    if (remaining <= 0) {
+      showToast('Ya agregaste el máximo de 2 unidades.');
+      return;
+    }
+    const qty = Math.min(clampQty(qtyInput.value), remaining);
+    if (qty <= 0) return;
 
+    const existing = cart.find(item => item.id === PRODUCT.id);
     if (existing) {
-      existing.qty = Math.min(existing.qty + qty, 99);
+      existing.qty = Math.min(existing.qty + qty, PRODUCT.maxQty);
     } else {
       cart.push({ id: PRODUCT.id, name: PRODUCT.name, price: PRODUCT.price, qty });
     }
 
     renderCart();
+    updateStepperLimits();
     showToast(`Agregaste ${qty} x ${PRODUCT.name} al carrito.`);
     qtyInput.value = 1;
   });
@@ -98,9 +134,9 @@
           </div>
           <div class="cart-item-controls">
             <div class="qty-stepper qty-stepper-sm" role="group" aria-label="Cantidad de ${item.name}">
-              <button type="button" class="qty-btn cart-item-minus" data-id="${item.id}" aria-label="Restar">−</button>
+              <button type="button" class="qty-btn cart-item-minus" data-id="${item.id}" aria-label="Restar" ${item.qty <= 1 ? 'disabled' : ''}>−</button>
               <span class="qty-display">${item.qty}</span>
-              <button type="button" class="qty-btn cart-item-plus" data-id="${item.id}" aria-label="Sumar">+</button>
+              <button type="button" class="qty-btn cart-item-plus" data-id="${item.id}" aria-label="Sumar" ${item.qty >= PRODUCT.maxQty ? 'disabled' : ''}>+</button>
             </div>
             <span class="cart-item-subtotal">${formatPrice(item.price * item.qty)}</span>
             <button type="button" class="cart-item-remove" data-id="${item.id}" aria-label="Quitar ${item.name}">
@@ -130,7 +166,7 @@
     clearCartBtn.disabled = cart.length === 0;
   }
 
-  // ── Eventos delegados dentro del carrito (sumar / restar / quitar) ──
+  // ── Eventos delegados dentro del carrito ──
   cartItemsList.addEventListener('click', (e) => {
     const minusBtn  = e.target.closest('.cart-item-minus');
     const plusBtn   = e.target.closest('.cart-item-plus');
@@ -142,20 +178,25 @@
         item.qty -= 1;
         if (item.qty <= 0) cart = cart.filter(i => i.id !== item.id);
         renderCart();
+        updateStepperLimits();
       }
     }
 
     if (plusBtn) {
       const item = cart.find(i => i.id === plusBtn.dataset.id);
-      if (item) {
-        item.qty = Math.min(item.qty + 1, 99);
+      if (item && item.qty < PRODUCT.maxQty) {
+        item.qty += 1;
         renderCart();
+        updateStepperLimits();
+      } else if (item) {
+        showToast('Máximo 2 unidades por persona.');
       }
     }
 
     if (removeBtn) {
       cart = cart.filter(i => i.id !== removeBtn.dataset.id);
       renderCart();
+      updateStepperLimits();
     }
   });
 
@@ -163,9 +204,10 @@
   clearCartBtn.addEventListener('click', () => {
     cart = [];
     renderCart();
+    updateStepperLimits();
   });
 
-  // ── Comprar (checkout simulado) ──
+  // ── Confirmar compra ──
   checkoutBtn.addEventListener('click', () => {
     if (cart.length === 0) return;
 
@@ -174,8 +216,8 @@
 
     cartItemsList.innerHTML = `
       <li class="cart-success">
-        <p class="cart-success-title">¡Compra confirmada!</p>
-        <p class="cart-success-msg">Compraste ${count} producto${count > 1 ? 's' : ''} por un total de ${formatPrice(total)}. Te enviamos la confirmación por correo.</p>
+        <p class="cart-success-title">¡Compra confirmada! 🎉</p>
+        <p class="cart-success-msg">Compraste ${count} producto${count > 1 ? 's' : ''} por un total de ${formatPrice(total)}.<br>Te enviamos la confirmación por correo.</p>
       </li>
     `;
     cartEmptyEl.hidden = true;
@@ -187,10 +229,11 @@
     checkoutBtn.disabled = true;
     clearCartBtn.disabled = true;
 
+    updateStepperLimits();
     showToast('¡Gracias por tu compra!');
   });
 
-  // ── Toast simple de confirmación ──
+  // ── Toast ──
   let toastTimeout = null;
   function showToast(message) {
     if (!cartToast) return;
@@ -204,5 +247,6 @@
 
   // ── Estado inicial ──
   renderCart();
+  updateStepperLimits();
 
 })();

@@ -24,33 +24,33 @@
       <li><a href="faq.html">FAQ</a></li>
       <li><a href="sponsor.html" class="active">Sponsor</a></li>
     </ul>
-    <div class="nav-actions d-flex align-items-center gap-2">
-      <button class="cart-toggle" id="cartToggle" type="button" data-bs-toggle="modal" data-bs-target="#cartModal" aria-label="Ver carrito">
+    <div class="d-flex align-items-center gap-2">
+      <!-- Carrito siempre visible -->
+      <button class="cart-toggle" id="cartToggle" data-bs-toggle="modal" data-bs-target="#cartModal" aria-label="Ver carrito">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="9" cy="21" r="1"></circle>
-          <circle cx="20" cy="21" r="1"></circle>
-          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
         </svg>
         <span class="cart-count" id="cartCount" hidden>0</span>
       </button>
       <a href="inscripcion.html" class="btn-primary d-none d-lg-inline-flex" id="navCta">Sumate!</a>
-      <button class="nav-toggle d-flex d-lg-none" id="navToggle" aria-label="Menú">
-        <span></span><span></span><span></span>
-      </button>
     </div>
+    <button class="nav-toggle d-flex d-lg-none" id="navToggle" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <!-- HERO -->
-  <section class="sponsor-hero row g-0 align-items-center">
-    <div class="sponsor-hero-text col-12 col-lg-6 anim">
+  <section class="sponsor-hero">
+    <div class="sponsor-hero-text anim">
       <span class="sponsor-eyebrow">Nuevo producto</span>
       <h1>¿CONOCÉS ESTE PRODUCTO?</h1>
       <p>Probá el nuevo WD-40 Skater Edition, pensado para mantener tus rollers a tope por muchos años. Lubrica tus rulemanes y los protege del polvo y la humedad. Además, tiene un aplicador de precisión.</p>
+      <a href="#oferta-lanzamiento" class="btn-outline">Aprovechá nuestra oferta</a>
+    </div>
 
-      <a href="#donde-encontrarlo" class="btn-outline">Aprovechá nuestra oferta</a>
-    </div> 
-
-    <div class="sponsor-viewer-wrap col-12 col-lg-6">
+    <div class="sponsor-viewer-wrap" id="viewerWrap">
       <canvas id="model-canvas"></canvas>
       <div class="viewer-hint" id="viewerHint">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -100,30 +100,30 @@
     </div>
   </section>
 
-  <!-- PRODUCT DETAIL -->
+  <!-- PRODUCT DETAIL + BUY BOX -->
   <section class="sponsor-info">
     <div class="sponsor-info-text anim">
       <h2>WD-40 SPECIALIST SKATING</h2>
       <p>Especialmente formulado para las exigencias del patinaje urbano. Mantiene tus rulemanes en movimiento constante, sesión tras sesión, con mínimo mantenimiento.</p>
       <p>El lubricante seco PTFE penetra en los rodamientos, reduce la fricción y crea una capa protectora que dura mucho más que los aceites convencionales.</p>
-      <div class="sponsor-specs">
-        <div class="sponsor-spec">
+      <div class="lubricante-specs">
+        <div class="lubricante-spec">
           <span class="spec-label">Tipo</span>
           <span class="spec-value">Lubricante seco PTFE</span>
         </div>
-        <div class="sponsor-spec">
+        <div class="lubricante-spec">
           <span class="spec-label">Contenido</span>
           <span class="spec-value">100 g / 110 ml</span>
         </div>
-        <div class="sponsor-spec">
+        <div class="lubricante-spec">
           <span class="spec-label">Silicona</span>
           <span class="spec-value">No contiene</span>
         </div>
-        <div class="sponsor-spec">
+        <div class="lubricante-spec">
           <span class="spec-label">Aplicador</span>
           <span class="spec-value">Tubo de precisión incluido</span>
         </div>
-        <div class="sponsor-spec">
+        <div class="lubricante-spec">
           <span class="spec-label">Ideal para</span>
           <span class="spec-value">Rulemanes, cables, bisagras</span>
         </div>
@@ -131,13 +131,13 @@
     </div>
   </section>
 
-  <!-- PURCHASE CTA -->
-  <section class="sponsor-cta" id="donde-encontrarlo">
+  <!-- LAUNCH OFFER CTA -->
+  <section class="sponsor-cta" id="oferta-lanzamiento">
     <h3 class="sponsor-cta-label anim">OFERTA LANZAMIENTO</h3>
     <h2 class="anim">¡APROVECHÁ LA OFERTA<br>DE LANZAMIENTO!</h2>
     <p class="anim">Edición limitada. Máximo 2 unidades por persona.</p>
     <div class="sponsor-purchase-box anim">
-      <span class="sponsor-purchase-price">$ 8.500</span>
+      <span class="sponsor-purchase-price">$ 15.850</span>
       <div class="sponsor-purchase-actions d-flex flex-wrap align-items-center justify-content-center gap-3 mt-3">
         <div class="qty-stepper" role="group" aria-label="Cantidad">
           <button type="button" class="qty-btn" id="ctaQtyMinus" aria-label="Restar cantidad">−</button>
@@ -149,39 +149,6 @@
       <p class="sponsor-cta-limit">Límite: 2 unidades por persona</p>
     </div>
   </section>
-
-  <!-- CART MODAL -->
-  <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
-      <div class="modal-content cart-modal-content">
-        <div class="modal-header cart-modal-header">
-          <h2 class="modal-title cart-modal-title" id="cartModalLabel">Tu carrito</h2>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-        </div>
-        <div class="modal-body cart-modal-body">
-          <div id="cartEmpty" class="cart-empty">
-            <p>Todavía no agregaste productos.</p>
-          </div>
-          <ul id="cartItemsList" class="cart-items-list"></ul>
-        </div>
-        <div class="modal-footer cart-modal-footer">
-          <div class="cart-total-row">
-            <span>Total</span>
-            <span id="cartTotal">$ 0</span>
-          </div>
-          <div class="cart-footer-actions">
-            <button type="button" class="btn-outline" id="clearCartBtn">Vaciar carrito</button>
-            <button type="button" class="btn-primary" id="checkoutBtn">Comprar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- CART TOAST -->
-  <div class="cart-toast-wrap" aria-live="polite" aria-atomic="true">
-    <div id="cartToast" class="cart-toast" role="status"></div>
-  </div>
 
   <!-- FOOTER -->
   <footer>
@@ -211,237 +178,43 @@
     </div>
   </footer>
 
+  <!-- CART MODAL -->
+  <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content cart-modal-content">
+        <div class="modal-header cart-modal-header">
+          <h2 class="cart-modal-title" id="cartModalLabel">Tu carrito</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body cart-modal-body">
+          <p class="cart-empty" id="cartEmpty">Tu carrito está vacío.</p>
+          <ul class="cart-items-list" id="cartItemsList" hidden></ul>
+        </div>
+        <div class="modal-footer cart-modal-footer">
+          <div class="cart-total-row w-100">
+            <span>Total</span>
+            <span id="cartTotal">$ 0</span>
+          </div>
+          <div class="cart-footer-actions w-100">
+            <button type="button" class="btn-outline" id="clearCartBtn" disabled>Vaciar</button>
+            <button type="button" class="btn-primary" id="checkoutBtn" disabled>Confirmar compra</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CART TOAST -->
+  <div class="cart-toast-wrap">
+    <div class="cart-toast" id="cartToast"></div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../js/three.min.js"></script>
   <script src="../js/GLTFLoader.js"></script>
   <script src="../js/wd40-data.js"></script>
   <script src="../js/main.js"></script>
   <script src="../js/cart.js"></script>
-
-  <script>
-    (function () {
-      const canvas = document.getElementById('model-canvas');
-      const hint   = document.getElementById('viewerHint');
-      if (!canvas || typeof THREE === 'undefined' || typeof THREE.GLTFLoader === 'undefined') return;
-
-      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-      renderer.setPixelRatio(window.devicePixelRatio);
-      renderer.outputEncoding = THREE.sRGBEncoding;
-      renderer.shadowMap.enabled = true;
-
-      const scene = new THREE.Scene();
-      scene.background = null;
-
-      const camera = new THREE.PerspectiveCamera(40, 1, 0.01, 100);
-      camera.position.set(0, 0, 0.55);
-
-      const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
-      scene.add(ambientLight);
-
-      const dirLight1 = new THREE.DirectionalLight(0xffffff, 2.5);
-      dirLight1.position.set(2, 4, 3);
-      scene.add(dirLight1);
-
-      const dirLight2 = new THREE.DirectionalLight(0xc8d8ed, 1.2);
-      dirLight2.position.set(-3, -1, 2);
-      scene.add(dirLight2);
-
-      const rimLight = new THREE.DirectionalLight(0xc8d8ed, 0.4);
-      rimLight.position.set(0, -3, -2);
-      scene.add(rimLight);
-
-      function resize() {
-        const w = canvas.parentElement.clientWidth;
-        const h = canvas.parentElement.clientHeight;
-        renderer.setSize(w, h);
-        camera.aspect = w / h;
-        camera.updateProjectionMatrix();
-      }
-      resize();
-      window.addEventListener('resize', resize);
-
-      let isDragging   = false;
-      let prevX = 0, prevY = 0;
-      let rotX = -0.15, rotY = 0.3;
-      let velX = 0, velY = 0;
-      let autoRotate   = true;
-      let hintHidden   = false;
-      const AUTO_SPEED = 0.003;
-      const DAMPING    = 0.88;
-
-      canvas.addEventListener('pointerdown', e => {
-        isDragging = true;
-        prevX = e.clientX;
-        prevY = e.clientY;
-        autoRotate = false;
-        velX = velY = 0;
-        if (!hintHidden) {
-          hintHidden = true;
-          hint.classList.add('hidden');
-        }
-        canvas.setPointerCapture(e.pointerId);
-      });
-
-      canvas.addEventListener('pointermove', e => {
-        if (!isDragging) return;
-        const dx = e.clientX - prevX;
-        const dy = e.clientY - prevY;
-        velX = dy * 0.008;
-        velY = dx * 0.008;
-        rotX += velX;
-        rotY += velY;
-        rotX = Math.max(-Math.PI / 2.5, Math.min(Math.PI / 2.5, rotX));
-        prevX = e.clientX;
-        prevY = e.clientY;
-      });
-
-      canvas.addEventListener('pointerup', () => { isDragging = false; });
-      canvas.addEventListener('pointercancel', () => { isDragging = false; });
-
-      let lastTouch = null;
-      canvas.addEventListener('touchstart', e => {
-        e.preventDefault();
-        lastTouch = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-        autoRotate = false;
-        if (!hintHidden) { hintHidden = true; hint.classList.add('hidden'); }
-      }, { passive: false });
-
-      canvas.addEventListener('touchmove', e => {
-        e.preventDefault();
-        if (!lastTouch) return;
-        const dx = e.touches[0].clientX - lastTouch.x;
-        const dy = e.touches[0].clientY - lastTouch.y;
-        velX = dy * 0.008;
-        velY = dx * 0.008;
-        rotX = Math.max(-Math.PI / 2.5, Math.min(Math.PI / 2.5, rotX + velX));
-        rotY += velY;
-        lastTouch = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-      }, { passive: false });
-
-      canvas.addEventListener('touchend', () => { lastTouch = null; });
-
-      const loader = new THREE.GLTFLoader();
-      let modelGroup = null;
-
-      function setupLoadedModel(gltf) {
-        const group = gltf.scene;
-        group.traverse(child => {
-          if (child.isMesh) {
-            const geo = child.geometry;
-            if (geo && !geo.attributes.normal) geo.computeVertexNormals();
-            if (Array.isArray(child.material)) {
-              child.material.forEach(m => { m.side = THREE.DoubleSide; });
-            } else if (child.material) {
-              child.material.side = THREE.DoubleSide;
-            }
-          }
-        });
-
-        const box = new THREE.Box3().setFromObject(group);
-        const size = box.getSize(new THREE.Vector3());
-        const maxDim = Math.max(size.x, size.y, size.z);
-        if (!maxDim || !isFinite(maxDim)) throw new Error('Invalid model bounds');
-        const scale = (0.35 * 0.75) / maxDim;
-        group.scale.setScalar(scale);
-
-        const center = box.getCenter(new THREE.Vector3());
-        group.position.sub(center.multiplyScalar(scale));
-        group.rotation.x = 0.1;
-        return group;
-      }
-
-      function dataUrlToArrayBuffer(dataUrl) {
-        const commaIdx = dataUrl.indexOf(',');
-        const b64 = dataUrl.slice(commaIdx + 1);
-        const binStr = atob(b64);
-        const len = binStr.length;
-        const bytes = new Uint8Array(len);
-        for (let i = 0; i < len; i++) bytes[i] = binStr.charCodeAt(i);
-        return bytes.buffer;
-      }
-
-      if (typeof window.WD40_GLB_DATA_URL === 'string') {
-        try {
-          const buffer = dataUrlToArrayBuffer(window.WD40_GLB_DATA_URL);
-          loader.parse(buffer, '', (gltf) => {
-            modelGroup = setupLoadedModel(gltf);
-            scene.add(modelGroup);
-          }, (err) => console.error('GLTFLoader.parse error:', err));
-        } catch (err) {
-          console.error('base64 decode error:', err);
-        }
-      } else {
-        loader.load('../multimedia/wd40.glb', (gltf) => {
-          modelGroup = setupLoadedModel(gltf);
-          scene.add(modelGroup);
-        }, undefined, (err) => console.error('GLTFLoader.load error:', err));
-      }
-
-      function animate() {
-        requestAnimationFrame(animate);
-
-        if (modelGroup) {
-          if (autoRotate) {
-            rotY += AUTO_SPEED;
-          } else if (!isDragging && !lastTouch) {
-            rotX += velX;
-            rotY += velY;
-            rotX = Math.max(-Math.PI / 2.5, Math.min(Math.PI / 2.5, rotX));
-            velX *= DAMPING;
-            velY *= DAMPING;
-            if (Math.abs(velX) < 0.0002 && Math.abs(velY) < 0.0002) {
-              velX = velY = 0;
-              autoRotate = true;
-            }
-          }
-          modelGroup.rotation.x = rotX;
-          modelGroup.rotation.y = rotY;
-        }
-
-        renderer.render(scene, camera);
-      }
-
-      animate();
-    })();
-  </script>
-
-  <script>
-    (function () {
-      const ctaMinus = document.getElementById('ctaQtyMinus');
-      const ctaPlus  = document.getElementById('ctaQtyPlus');
-      const ctaInput = document.getElementById('ctaQtyInput');
-      const ctaBtn   = document.getElementById('ctaAddToCartBtn');
-      const MAX_QTY  = 2;
-
-      function clampCta(v) { return Math.max(1, Math.min(MAX_QTY, v)); }
-
-      ctaMinus && ctaMinus.addEventListener('click', () => {
-        ctaInput.value = clampCta(parseInt(ctaInput.value, 10) - 1);
-      });
-      ctaPlus && ctaPlus.addEventListener('click', () => {
-        ctaInput.value = clampCta(parseInt(ctaInput.value, 10) + 1);
-      });
-      ctaInput && ctaInput.addEventListener('change', () => {
-        ctaInput.value = clampCta(parseInt(ctaInput.value, 10) || 1);
-      });
-
-      ctaBtn && ctaBtn.addEventListener('click', () => {
-        const qty = parseInt(ctaInput.value, 10);
-        // Reuse main addToCart from cart.js if available
-        if (typeof window.addToCart === 'function') {
-          window.addToCart(qty);
-        } else {
-          // Fallback: trigger the hero add-to-cart with same qty
-          const heroInput = document.getElementById('qtyInput');
-          const heroBtn   = document.getElementById('addToCartBtn');
-          if (heroInput && heroBtn) {
-            heroInput.value = qty;
-            heroBtn.click();
-          }
-        }
-      });
-    })();
-  </script>
 
 </body>
 </html>
